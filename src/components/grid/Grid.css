@@ -1,0 +1,16 @@
+table {
+    border-collapse: collapse;
+    border: 3px solid bisque;
+    background-color: bisque;
+}
+
+td {
+    padding: 0;
+}
+
+.bBorder {
+    border-bottom: 2px solid black;
+}
+.rBorder {
+    border-right: 2px solid black;
+}
