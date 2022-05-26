@@ -17,6 +17,7 @@
 
 .buttonContainer {
     margin-top: 20px;
+    
 }
 
 .easyButton {
@@ -26,6 +27,8 @@
     border: none;
     border-radius: 20px;
     font-size: 14px;
+    margin-left: 2px;
+    margin-right: 2px;
 }
 .mediumButton {
     background-color: yellow;
@@ -34,6 +37,8 @@
     border: none;
     border-radius: 20px;
     font-size: 14px;
+    margin-left: 2px;
+    margin-right: 2px;
 }
 .hardButton {
     background-color: red;
@@ -42,4 +47,18 @@
     border: none;
     border-radius: 20px;
     font-size: 14px;
+    margin-left: 2px;
+    margin-right: 2px;
+}
+.grid {
+    width: 478px;
+    height: 478px;
+}
+
+@media all and (max-width: 478px){
+    .grid {
+        width: 98vw;
+        height: 98vw;
+    }
+    
 }
