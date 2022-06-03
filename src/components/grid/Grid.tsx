@@ -3,48 +3,25 @@ import "./Grid.css";
 
 export interface GridProps {
   values: string[];
-  solutionValues: string[];
-  onChange: (index: number, newValue: string) => void;
-  onFalseInput: () => void;
+  clickedCell: number;
+  onClick: (index: number) => void;
 }
 
-export const Grid: React.FC<GridProps> = ({
-  values,
-  solutionValues,
-  onChange,
-  onFalseInput,
-}) => {
+export const Grid: React.FC<GridProps> = ({ values, onClick, clickedCell }) => {
   const render = (): React.ReactElement => {
     return (
-      <div className="grid">
-        <table>
-          <tbody>
-            {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((row, rIndex) => {
-              return (
-                <tr key={rIndex} className={row % 3 === 0 ? "bBorder" : ""}>
-                  {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((col, cIndex) => {
-                    return (
-                      <td
-                        key={rIndex * 9 + cIndex}
-                        className={col % 3 === 0 ? "rBorder" : ""}
-                      >
-                        <Cell
-                          key={rIndex * 9 + cIndex}
-                          solvedValue={solutionValues[rIndex * 9 + cIndex]}
-                          currentValue={values[rIndex * 9 + cIndex]}
-                          onChange={(newValue) =>
-                            onChange(rIndex * 9 + cIndex, newValue)
-                          }
-                          onFalseInput={() => onFalseInput()}
-                        />
-                      </td>
-                    );
-                  })}
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
+      <div className="grid grid-cols-9">
+        {values.map((value, index) => {
+          return (
+            <Cell
+              isClicked={clickedCell === index ? true : false}
+              isSolved={values[index] === "0" ? false : true}
+              key={index}
+              value={values[index]}
+              onClick={() => onClick(index)}
+            />
+          );
+        })}
       </div>
     );
   };

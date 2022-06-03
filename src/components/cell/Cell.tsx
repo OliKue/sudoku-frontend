@@ -1,35 +1,30 @@
 import "./Cell.css";
 
 export interface CellProps {
-  currentValue: string;
-  solvedValue: string;
-  onChange: (newValue: string) => void;
-  onFalseInput: () => void;
+  value: string;
+  isClicked: boolean;
+  isSolved: boolean;
+  onClick: () => void;
 }
 
 export const Cell: React.FC<CellProps> = ({
-  currentValue,
-  solvedValue,
-  onChange,
-  onFalseInput,
+  value,
+  isClicked,
+  isSolved,
+  onClick,
 }) => {
-  const checkInput = (input: string) => {
-    if (input === solvedValue) {
-      onChange(input);
-    } else {
-      onFalseInput();
-    }
-  };
-
   const render = (): React.ReactElement => {
+    var className: string = "cell";
+    if (isClicked) {
+      className = "cell clicked";
+    }
+    if (isSolved) {
+      className = "cell";
+    }
     return (
-      <input
-        className="cellInput"
-        type="text"
-        value={currentValue === "0" ? "" : currentValue}
-        onChange={(event) => checkInput(event.currentTarget.value)}
-        disabled={currentValue !== "0"}
-      ></input>
+      <div className={className} onClick={onClick}>
+        {value === "0" ? "" : value}
+      </div>
     );
   };
 
